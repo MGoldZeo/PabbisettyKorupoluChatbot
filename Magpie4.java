@@ -18,7 +18,7 @@ public class Magpie4
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, let's talk.";
+		return "Konnichiwa, future member of the Republican Party!";
 	}
 	
 	/**
