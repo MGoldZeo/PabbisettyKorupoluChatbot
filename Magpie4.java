@@ -30,7 +30,7 @@ public class Magpie4
 	 */
 	public String getResponse(String statement)
 	{
-		String response = "";
+		String response;
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
@@ -127,7 +127,7 @@ public class Magpie4
 	
 	
 	/**
-	 * Search for one word in phrase.  The search is not case sensitive.
+	 * Search for one word in phrase.  The search is not case-sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
 	 * (so, for example, "I know" does not contain "no").  
 	 * @param statement the string to search
@@ -171,7 +171,7 @@ public class Magpie4
 	}
 	
 	/**
-	 * Search for one word in phrase.  The search is not case sensitive.
+	 * Search for one word in phrase.  The search is not case-sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
 	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
 	 * @param statement the string to search
@@ -198,19 +198,19 @@ public class Magpie4
 		
 		if (whichResponse == 0)
 		{
-			response = "Interesting, tell me more.";
+			response = "I wanna know more desu~~";
 		}
 		else if (whichResponse == 1)
 		{
-			response = "Hmmm.";
+			response = "All I know is that Trump-san will build a wall desu!";
 		}
 		else if (whichResponse == 2)
 		{
-			response = "Do you really think so?";
+			response = "Honto ni omoimasuka?";
 		}
 		else if (whichResponse == 3)
 		{
-			response = "You don't say.";
+			response = "No way!";
 		}
 
 		return response;
