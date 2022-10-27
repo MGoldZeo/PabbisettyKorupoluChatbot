@@ -33,19 +33,19 @@ public class Magpie4
 		String response;
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Onii-chan, I'm lonely. Would you like to hear about how the Democrats are defiling fiscal policy by refusing to tap into stored fuel reserves?";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Nooo, what happened big brother? Nande don't you wanna?";
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
-			response = "Tell me more about your family.";
+			response = "I'm sorry to hear that. My daddy was killed trying to cross the border. Anyway immigrants are ruining our country.";
 		}
 
 		// Responses which require transformations
@@ -92,7 +92,7 @@ public class Magpie4
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would it mean to " + restOfStatement + "?";
+		return "What would it mean to " + restOfStatement + ", onii-chan?";
 	}
 
 	
@@ -119,7 +119,7 @@ public class Magpie4
 		int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
 		
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-		return "What makes you think that I " + restOfStatement + " you?";
+		return "Ara ara~ Why do I " + restOfStatement + " you?";
 	}
 	
 	
