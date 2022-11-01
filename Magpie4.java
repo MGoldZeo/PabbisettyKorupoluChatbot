@@ -33,12 +33,12 @@ public class Magpie4
 		String response = "";
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Don't be cold to me. Refusing to end a debate is known as filibuster.";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "In politics, it is important to have positive discourse to reach an agreeable conclusion";
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
@@ -54,10 +54,10 @@ public class Magpie4
 
 		}else if(findKeyword(statement, "democrat")>=0
 				||findKeyword(statement, "republican")>=0){
-			response = "I consider myself a democrat!";
+			response = "I consider myself a Republican!";
 			
 		}else if(findKeyword(statement, "think")>=0){
-			response = "why do you think this?";
+			response = "Why do you think this?";
 		}
 
 		// Responses which require transformations
