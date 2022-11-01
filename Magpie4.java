@@ -10,7 +10,6 @@
  * @version April 2012
  *
  */
-//ØNFoo0CEAD1nhklvlDf0
 public class Magpie4
 {
 	/**
@@ -19,7 +18,8 @@ public class Magpie4
 	 */	
 	public String getGreeting()
 	{
-		return "Konnichiwa, future member of the Republican Party!";
+
+		return "Konnichiwa, future member of the Republican Party! Atashi wa Hatchine Mika, your new imouto <3";
 	}
 	
 	/**
@@ -29,6 +29,7 @@ public class Magpie4
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
+	public boolean ucount = false;
 	public String getResponse(String statement)
 	{
 		String response;
@@ -39,7 +40,7 @@ public class Magpie4
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Nooo, what happened big brother? Nande don't you wanna?";
+			response = "Nooo, what happened nii-nii? Nande don't you wanna?";
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
@@ -47,6 +48,13 @@ public class Magpie4
 				|| findKeyword(statement, "brother") >= 0)
 		{
 			response = "I'm sorry to hear that. My daddy was killed trying to cross the border. Anyway immigrants are ruining our country.";
+		}
+		else if ((findKeyword(statement, "you?") >= 0 || findKeyword(statement, "yours?") >= 0) && ucount == false){
+			response = "Mika doesn't know much about herself except that she is a Republican ~nyan~. Will onii-chan help me find out?";
+			ucount = true;
+		}
+		else if ((findKeyword(statement, "you?") >= 0 || findKeyword(statement, "yours?") >= 0) && ucount == true){
+			response = "I don't know the answer to that, onii-chan :(. I feel however you feel desu~~.";
 		}
 
 		// Responses which require transformations
@@ -73,7 +81,7 @@ public class Magpie4
 		}
 		return response;
 	}
-	
+
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "What would it mean to <something>?"
@@ -211,7 +219,7 @@ public class Magpie4
 		}
 		else if (whichResponse == 3)
 		{
-			response = "No way!";
+			response = "Maji de??!!";
 		}
 
 		return response;

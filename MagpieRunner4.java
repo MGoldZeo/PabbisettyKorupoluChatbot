@@ -17,8 +17,9 @@ public class MagpieRunner4
 		
 		System.out.println (mr_sunday.getGreeting());
 		Scanner in = new Scanner (System.in);
+		String temp = in.nextLine();
+		System.out.println("How was your day today?");
 		String statement = in.nextLine();
-		
 		while (!statement.equals("Bye"))
 		{
 			System.out.println (mr_sunday.getResponse(statement));
