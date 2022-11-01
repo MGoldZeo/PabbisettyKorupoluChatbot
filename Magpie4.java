@@ -10,6 +10,7 @@
  * @version April 2012
  *
  */
+//ØNFonlM7j78WRjbRPpAL
 public class Magpie4
 {
 	/**
