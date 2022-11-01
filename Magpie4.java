@@ -1,4 +1,4 @@
-/**
+	/**
  * A program to carry on conversations with a human user.
  * This version:
  *<ul><li>
@@ -18,8 +18,7 @@ public class Magpie4
 	 */	
 	public String getGreeting()
 	{
-
-		return "Konnichiwa, future member of the Republican Party! Atashi wa Hatchine Mika, your new imouto <3";
+		return "Hello, let's talk. My name is Jean-Pierre Laurent VII, and I am a chatbot that knows a lot about politics!";
 	}
 	
 	/**
@@ -29,32 +28,36 @@ public class Magpie4
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
-	public boolean ucount = false;
 	public String getResponse(String statement)
 	{
-		String response;
+		String response = "";
 		if (statement.length() == 0)
 		{
-			response = "Onii-chan, I'm lonely. Would you like to hear about how the Democrats are defiling fiscal policy by refusing to tap into stored fuel reserves?";
+			response = "Say something, please.";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Nooo, what happened nii-nii? Nande don't you wanna?";
+			response = "Why so negative?";
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
-			response = "I'm sorry to hear that. My daddy was killed trying to cross the border. Anyway immigrants are ruining our country.";
-		}
-		else if ((findKeyword(statement, "you?") >= 0 || findKeyword(statement, "yours?") >= 0) && ucount == false){
-			response = "Mika doesn't know much about herself except that she is a Republican ~nyan~. Will onii-chan help me find out?";
-			ucount = true;
-		}
-		else if ((findKeyword(statement, "you?") >= 0 || findKeyword(statement, "yours?") >= 0) && ucount == true){
-			response = "I don't know the answer to that, onii-chan :(. I feel however you feel desu~~.";
+			response = "Tell me more about your family. How do they align themselves politically?";
+		}else if(findKeyword(statement, "politics")>=0){
+			response = "I love politics! Tell me more.";
+
+		}else if(findKeyword(statement, "party")>=0){
+			response = "Democrats are winning in the government!";
+
+		}else if(findKeyword(statement, "democrat")>=0
+				||findKeyword(statement, "republican")>=0){
+			response = "I consider myself a democrat!";
+			
+		}else if(findKeyword(statement, "think")>=0){
+			response = "why do you think this?";
 		}
 
 		// Responses which require transformations
@@ -81,7 +84,7 @@ public class Magpie4
 		}
 		return response;
 	}
-
+	
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "What would it mean to <something>?"
@@ -101,7 +104,7 @@ public class Magpie4
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would it mean to " + restOfStatement + ", onii-chan?";
+		return "What would it mean to " + restOfStatement + "?";
 	}
 
 	
@@ -128,7 +131,7 @@ public class Magpie4
 		int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
 		
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-		return "Ara ara~ Why do I " + restOfStatement + " you?";
+		return "What makes you think that I " + restOfStatement + " you?";
 	}
 	
 	
@@ -136,7 +139,7 @@ public class Magpie4
 	
 	
 	/**
-	 * Search for one word in phrase.  The search is not case-sensitive.
+	 * Search for one word in phrase.  The search is not case sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
 	 * (so, for example, "I know" does not contain "no").  
 	 * @param statement the string to search
@@ -180,7 +183,7 @@ public class Magpie4
 	}
 	
 	/**
-	 * Search for one word in phrase.  The search is not case-sensitive.
+	 * Search for one word in phrase.  The search is not case sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
 	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
 	 * @param statement the string to search
@@ -207,19 +210,19 @@ public class Magpie4
 		
 		if (whichResponse == 0)
 		{
-			response = "I wanna know more desu~~";
+			response = "Interesting, tell me more.";
 		}
 		else if (whichResponse == 1)
 		{
-			response = "All I know is that Trump-san will build a wall desu!";
+			response = "Hmmm.";
 		}
 		else if (whichResponse == 2)
 		{
-			response = "Honto ni omoimasuka?";
+			response = "Do you really think so?";
 		}
 		else if (whichResponse == 3)
 		{
-			response = "Maji de??!!";
+			response = "You don't say.";
 		}
 
 		return response;
