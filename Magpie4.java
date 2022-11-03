@@ -1,4 +1,4 @@
-	/**
+/**
  * A program to carry on conversations with a human user.
  * This version:
  *<ul><li>
@@ -18,7 +18,7 @@ public class Magpie4
 	 */	
 	public String getGreeting()
 	{
-		return "Bonjour! My name is Léa Jean-Pierre Laurent VII, but you can call me Léa! I am a chatbot that knows a lot about American politics!";
+		return "Bonjour! My name is Léa Jean-Pierre Laurent VII, but you can call me Léa! I am a chatbot that knows a lot about American politics! What's your name?";
 	}
 	
 	/**

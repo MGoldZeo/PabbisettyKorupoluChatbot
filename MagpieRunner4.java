@@ -7,27 +7,23 @@ import java.util.Scanner;
  */
 public class MagpieRunner4
 {
-
+	public String username = new String();
 	/**
 	 * Create a Magpie, give it user input, and print its replies.
 	 */
 	public static void main(String[] args)
 	{
-		Magpie4 maggie = new Magpie4();
+		Magpie4 mr_sunday = new Magpie4();
 		
-		System.out.println (maggie.getGreeting());
+		System.out.println (mr_sunday.getGreeting());
 		Scanner in = new Scanner (System.in);
+		String username = in.nextLine();
+		System.out.println("How was your day today?");
 		String statement = in.nextLine();
-		in.close();
 		while (!statement.equals("Bye"))
 		{
-			if(statement.equals("Bye")){
-				break;
-			}
-			System.out.println (maggie.getResponse(statement));
+			System.out.println (mr_sunday.getResponse(statement));
 			statement = in.nextLine();
 		}
-		System.out.println("Adieu my friend! It was fun discussing politics with you");	
 	}
-
 }
