@@ -7,7 +7,6 @@ import java.util.Scanner;
  */
 public class MagpieRunner4
 {
-	public String username = new String();
 	/**
 	 * Create a Magpie, give it user input, and print its replies.
 	 */
@@ -15,11 +14,13 @@ public class MagpieRunner4
 	{
 		Magpie4 mr_sunday = new Magpie4();
 		
-		System.out.println (mr_sunday.getGreeting());
+		System.out.println(mr_sunday.getGreeting());
 		Scanner in = new Scanner (System.in);
-		String username = in.nextLine();
-		System.out.println("How was your day today?");
+		System.out.println("Hello user! What is your name?");
 		String statement = in.nextLine();
+		System.out.println(PIQ.quiz(statement));
+		System.out.println("Now that we're done with the quiz, would you like to have a conversation?");
+		statement = in.nextLine();
 		while (!statement.equals("Bye"))
 		{
 			System.out.println (mr_sunday.getResponse(statement));
