@@ -18,7 +18,7 @@ public class Magpie4
 	 */	
 	public String getGreeting()
 	{
-		return "Bonjour! My name is Léa Jean-Pierre Laurent VII, but you can call me Léa! I am a chatbot that knows a lot about American politics! What's your name?";
+		return "Bonjour! My name is Léa Jean-Pierre Laurent VII, but you can call me Léa! I am a chatbot that knows a lot about American politics!";
 	}
 	
 	/**
@@ -68,6 +68,9 @@ public class Magpie4
 			response = "I don't believe that abortion should be legal. Abortion kills children who could grow up to become healthy, contributing adults.";
 		}else if(findKeyword(statement, "feel")>=0){
 			response = "Having emotions is natural for human beings. Of course, I wouldn't know, but just know that however you feel is completely okay! Don't let feelings get in the way of your dreams, though.";
+		}else if(findKeyword(statement, "game")>=0){
+			System.out.println(PIQ.quiz());
+			System.out.println("Now that we're done with the quiz, would you like to have a conversation?");
 		}
 
 		// Responses which require transformations
@@ -141,7 +144,7 @@ public class Magpie4
 		int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
 		
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-		return "What makes you think that I " + restOfStatement + " you?";
+		return "What makes you think that I can " + restOfStatement + " you?";
 	}
 	
 	
@@ -213,7 +216,7 @@ public class Magpie4
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 5;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -234,7 +237,10 @@ public class Magpie4
 		{
 			response = "In politics, a difference of ideology is key, so it's good that we don't always agree.";
 		}
-
+		else if (whichResponse == 4)
+		{
+			response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
+		}
 		return response;
 	}
 

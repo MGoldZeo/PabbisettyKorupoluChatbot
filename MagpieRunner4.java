@@ -13,14 +13,13 @@ public class MagpieRunner4
 	public static void main(String[] args)
 	{
 		Magpie4 mr_sunday = new Magpie4();
-		
-		System.out.println(mr_sunday.getGreeting());
+
 		Scanner in = new Scanner (System.in);
 		System.out.println("Hello user! What is your name?");
+		String username = in.nextLine();
+		System.out.println("It's so nice to meet you, " + username + "!");
+		System.out.println(mr_sunday.getGreeting());
 		String statement = in.nextLine();
-		System.out.println(PIQ.quiz(statement));
-		System.out.println("Now that we're done with the quiz, would you like to have a conversation?");
-		statement = in.nextLine();
 		while (!statement.equals("Bye"))
 		{
 			System.out.println (mr_sunday.getResponse(statement));

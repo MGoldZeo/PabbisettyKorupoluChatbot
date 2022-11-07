@@ -1,111 +1,91 @@
 import java.util.*;
+
 public class PIQ {
-    public static String quiz(String username) {
+    public static String quiz() {
         Scanner in = new Scanner(System.in);
-        System.out.println("What is your name?");
         int total = 0;
 
-        System.out.println("Hello there "+username+", let's take a political ideology quiz!");
-        System.out.println("Please respond to each of the following questions with Agree, Maybe, or Disagree");
+        System.out.println("Let's take a political ideology quiz!");
+        System.out.println("There are ten questions in total. Please respond to each statement with Agree, Maybe, or Disagree");
+        System.out.println();
 
         //question 1
-        System.out.println("Government should not censor speech, press, media or internet.");
+        System.out.println("The government should censor speech, the press, media or the internet.");
         String response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total+=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total-=1;break;
-        }
+        total += tChange(response);
 
         //question 2
         System.out.println("Military service should be voluntary. There should be no draft.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total+=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total-=1;break;
-        }
+        total += tChange(response);
+
 
         //question 3
-        System.out.println("There should be no laws regarding sex between consenting adults.");
+        System.out.println("Laws regarding sex between consenting adults should not exist.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total+=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total-=1;break;
-        }
+        total += tChange(response);
+
 
         //question 4
-        System.out.println("Repeal laws prohibiting adult possession and use of drugs.");
+        System.out.println("Laws regarding the possession and use of drugs as an adult should be repealed.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total+=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total-=1;break;
-        }
+        total += tChange(response);
+
 
         //question 5
-        System.out.println("Government should not target, detain, and deport undocumented workers.");
+        System.out.println("The government should not target, detain, or deport undocumented workers.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total+=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total-=1;break;
-        }
+        total += tChange(response);
+
 
         //question 6
-        System.out.println("Taxpayers should NOT be responsible for student loan debt.");
+        System.out.println("Taxpayers should be responsible for student loan debt.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total-=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total+=1;break;
-        }
+        total += tChange(response);
+
 
         //question 7
-        System.out.println("Government should not be responsible for providing healthcare.");
+        System.out.println("The government should be responsible for providing healthcare for all citizens.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total-=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total+=1;break;
-        }
+        total += tChange(response);
+
 
         //question 8
-        System.out.println("Let people control their own retirement; privatize Social Security.");
+        System.out.println("Social Security should not be privatised. Everyone has a right to benefit.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total-=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total+=1;break;
-        }
+        total += tChange(response);
+
 
         //question 9
-        System.out.println("Replace government welfare with private charity.");
+        System.out.println("Do not replace government welfare with private charity.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total-=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total+=1;break;
-        }
+        total += tChange(response);
+
 
         //question 10
         System.out.println("Cut taxes and government spending by 50% or more.");
         response = in.nextLine();
-        switch (response.toLowerCase()){
-            case "agree":total-=1;break;
-            case "maybe":total+=0;break;
-            case "disagree":total+=1;break;
-        }
+        total += tChange(response);
 
-        if(total<0){
-            return "You are conservative!";
+        System.out.println("You're finished with the quiz! Here are your results:");
+
+
+        if (total < -1) {
+            return "You are conservative, with a score of " + total + "!";
+        } else if (total <= 1 && total >= -1) {
+            return "You are centrist, with a score of " + total + "!";
+        } else {
+            return "You are liberal, with a score of " + total + "!";
         }
-        else if (total==0){
-            return "You are centrist!";
+    }
+
+    private static int tChange(String txt) {
+        int change = 0;
+        switch (txt.toLowerCase()) {
+            case "agree" -> change = 1;
+            case "maybe" -> change = 0;
+            case "disagree" -> change = -1;
         }
-        else{
-            return "You are liberal!";
-        }
+        return change;
     }
 }
