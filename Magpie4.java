@@ -62,6 +62,8 @@ public class Magpie4 {
 		} else if (findKeyword(statement, "game") >= 0) {
 			System.out.println(PIQ.quiz());
 			System.out.println("Now that we're done with the quiz, would you like to have a conversation?");
+		}else if (findKeyword(statement, "name") >= 0) {
+			response = "My programmers named me Léa after Leah Cole Allen, a former politician who left to focus on nursing. But she's back up for election this season, so make sure to cast your vote for her!";
 		}
 
 		// Responses which require transformations
@@ -139,7 +141,7 @@ public class Magpie4 {
 	 * @param startPos  the character of the string to begin the search at
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
 	 */
-	private int findKeyword(String statement, String goal, int startPos) {
+	public static int findKeyword(String statement, String goal, int startPos) {
 		String phrase = statement.trim();
 		//  The only change to incorporate the startPos is in the line below
 		int psn = phrase.toLowerCase().indexOf(goal.toLowerCase(), startPos);
@@ -178,7 +180,7 @@ public class Magpie4 {
 	 * @param goal      the string to search for
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
 	 */
-	private int findKeyword(String statement, String goal) {
+	public static int findKeyword(String statement, String goal) {
 		return findKeyword(statement, goal, 0);
 	}
 
@@ -204,8 +206,6 @@ public class Magpie4 {
 			response = "In politics, a difference of ideology is key, so it's good that we don't always agree.";
 		} else if (whichResponse == 4) {
 			response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
-		} else if (whichResponse == 5) {
-			response = "My programmers named me Léa after Leah Cole Allen, a former politician who left to focus on nursing. But she's back up for election this season, so make sure to cast your vote for her!";
 		}
 		return response;
 	}

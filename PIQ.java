@@ -11,60 +11,60 @@ public class PIQ {
 
         //question 1
         System.out.println("The government should censor speech, the press, media or the internet.");
-        String response = in.nextLine();
+        String response = loopQ(in.nextLine());
         total += tChange(response);
 
         //question 2
         System.out.println("Military service should be voluntary. There should be no draft.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 3
         System.out.println("Laws regarding sex between consenting adults should not exist.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 4
         System.out.println("Laws regarding the possession and use of drugs as an adult should be repealed.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 5
         System.out.println("The government should not target, detain, or deport undocumented workers.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 6
         System.out.println("Taxpayers should be responsible for student loan debt.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 7
         System.out.println("The government should be responsible for providing healthcare for all citizens.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 8
         System.out.println("Social Security should not be privatised. Everyone has a right to benefit.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 9
         System.out.println("Do not replace government welfare with private charity.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
 
         //question 10
         System.out.println("Cut taxes and government spending by 50% or more.");
-        response = in.nextLine();
+        response = loopQ(in.nextLine());
         total += tChange(response);
 
         System.out.println("You're finished with the quiz! Here are your results:");
@@ -87,5 +87,14 @@ public class PIQ {
             case "disagree" -> change = -1;
         }
         return change;
+    }
+
+    private static String loopQ(String txt) {
+        Scanner ne = new Scanner(System.in);
+        while (!txt.equalsIgnoreCase("agree") && !txt.equalsIgnoreCase("disagree") && !txt.equalsIgnoreCase("maybe")) {
+            System.out.println("Please answer with 'agree', 'disagree' or 'maybe'.");
+            txt = ne.nextLine();
+        }
+        return txt;
     }
 }
