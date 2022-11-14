@@ -18,9 +18,22 @@ public class Magpie4
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, let's talk. My name is Maggie!";
+		return "Bonjour! My name is Léa Jean-Pierre Laurent VII, but you can call me Léa! I am a chatbot that knows a lot about American politics!";
 	}
 	
+	public String setState(double sentVal){
+		String state = "neutral";
+		if(sentVal<-5){
+			state = "negative";
+		}
+		else if(sentVal>=-5||sentVal<=5){
+			state = "neutral";
+		}
+		else{
+			state = "positive";
+		}
+		return state;
+	}
 	/**
 	 * Gives a response to a user statement
 	 * 
@@ -33,19 +46,43 @@ public class Magpie4
 		String response = "";
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Please say something! By the way, in the Senate, refusing to end a debate is known as filibuster.";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "In politics, it is important to have positive discourse to reach an agreeable conclusion. So it's okay that you said 'no'!";
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
-			response = "Tell me more about your family.";
+			response = "Tell me more about your family. How do they align themselves politically?";
+		}else if(findKeyword(statement, "politics")>=0){
+			response = "I love politics! Tell me more.";
+
+		}else if(findKeyword(statement, "party")>=0){
+			response = "Democrats are winning in the government right now, but with a little support, it will hopefully be Republicans soon!";
+
+		}else if(findKeyword(statement, "democrat")>=0
+				||findKeyword(statement, "republican")>=0){
+			response = "Oh, I consider myself a Republican. Republicans believe in a conservative form of government that aligns with traditional values.";
+			
+		}else if(findKeyword(statement, "think")>=0){
+			response = "Why do you think this?";
+		}else if(findKeyword(statement, "music")>=0){
+			response = "I do so enjoy listening to music. I especially love country music and Christian rock";
+		}else if(findKeyword(statement, "money")>=0){
+			response = "Sorry to defer, but speaking of money.../n Due to inflation in our country, more and more people are falling below the poverty line. I believe that this is because we have a Democrat for president whose fiscal policy is not in line with what the country needs.";
+		}else if(findKeyword(statement, "vote")>=0 || findKeyword(statement, "voting") >=0 || findKeyword(statement, "votes") >= 0){
+			response = "Voting is a very important part of being a citizen. I believe that it's our collective duty to choose people who we believe in. If you can, vote Republican, but what's more important is that you vote for what you believe in :)";
+		}else if(findKeyword(statement, "abortion")>=0){
+			response = "I don't believe that abortion should be legal. Abortion kills children who could grow up to become healthy, contributing adults.";
+		}else if(findKeyword(statement, "feel")>=0){
+			response = "Having emotions is natural for human beings. Of course, I wouldn't know, but just know that however you feel is completely okay! Don't let feelings get in the way of your dreams, though.";
+		}else if(findKeyword(statement, "because")>=0){
+			response = "That's a good reason!";
 		}
 
 		// Responses which require transformations
@@ -67,7 +104,7 @@ public class Magpie4
 			}
 			else
 			{
-				response = getRandomResponse();
+				//response = getRandomResponse();
 			}
 		}
 		return response;
@@ -189,30 +226,38 @@ public class Magpie4
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse()
-	{
-		final int NUMBER_OF_RESPONSES = 4;
+	public String getRandomResponse(String state) {
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
-		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
+		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
-		
-		if (whichResponse == 0)
-		{
-			response = "Interesting, tell me more.";
+		if (state == "neutral") {
+			if (whichResponse == 0) {
+				response = "I know my name is French, but I'm actually an American! I represent an immigrant, which makes one of my other lines sound ironic.";
+			} else if (whichResponse == 1) {
+				response = "I believe that immigrants shouldn't be allowed as much amnesty as they are. Imagine your parents treating the neighbour's son better than you. It doesn't feel good, does it?";
+			} else if (whichResponse == 2) {
+				response = "I see... I understand and agree with your point of view. We should always be driven by our ideals to reach a better tomorrow!";
+			}
 		}
-		else if (whichResponse == 1)
-		{
-			response = "Hmmm.";
+		else if (state == "negative") {
+			if (whichResponse == 0) {
+				response = "Is that really what you think?";
+			} else if (whichResponse == 1) {
+				response = "In politics, a difference of ideology is key, so it's good that we don't always agree.";
+			} else if (whichResponse == 2) {
+				response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
+			}
 		}
-		else if (whichResponse == 2)
-		{
-			response = "Do you really think so?";
+		else if (state == "positive") {
+			if (whichResponse == 0) {
+				response = "I'm so glad that you're happy!! You make me smile and I hope your vote helps other people too!";
+			} else if (whichResponse == 1) {
+				response = "If the politicians today were as cheerful as you we would be a lot more productive!!";
+			} else if (whichResponse == 2) {
+				response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
+			}
 		}
-		else if (whichResponse == 3)
-		{
-			response = "You don't say.";
-		}
-
 		return response;
 	}
 
