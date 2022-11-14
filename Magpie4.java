@@ -92,7 +92,7 @@ public class Magpie4 {
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
-	private String transformIWantToStatement(String statement) {
+	private String transformIWantToStatement(String statement, String state) {
 		//  Remove the final period, if there is one
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
@@ -103,7 +103,11 @@ public class Magpie4 {
 		}
 		int psn = findKeyword(statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would it mean to " + restOfStatement + "?";
+		switch (state){
+			case "positive": return "Please, tell me more about " + restOfStatement + ".";
+			case "negative": return "Why would I ever " + restOfStatement + "?";
+			default: return "What would it mean to " + restOfStatement + "?";
+		}
 	}
 
 
@@ -114,7 +118,7 @@ public class Magpie4 {
 	 * @param statement the user statement, assumed to contain "you" followed by "me"
 	 * @return the transformed statement
 	 */
-	private String transformYouMeStatement(String statement) {
+	public String transformYouMeStatement(String statement, String state) {
 		//  Remove the final period, if there is one
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
@@ -128,7 +132,11 @@ public class Magpie4 {
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
 
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-		return "What makes you think that I can " + restOfStatement + " you?";
+		switch (state){
+			case "positive": return "I'm flattered, but why would I " + restOfStatement + " you?";
+			case "negative": return "Why would I " + restOfStatement + " you?";
+			default: return "What makes you think that I can " + restOfStatement + " you?";
+		}
 	}
 
 
