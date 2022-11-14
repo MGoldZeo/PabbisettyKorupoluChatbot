@@ -19,6 +19,7 @@ public class Magpie4 {
 	public String getGreeting() {
 		return "Bonjour! My name is Léa Jean-Pierre Laurent VII, but you can call me Léa! I am a chatbot that knows a lot about American politics!";
 	}
+	String statecur = "neutral";
 
 	/**
 	 * Gives a response to a user statement
@@ -183,29 +184,46 @@ public class Magpie4 {
 	public static int findKeyword(String statement, String goal) {
 		return findKeyword(statement, goal, 0);
 	}
+	public String setState(){
+		return null;
 
-
+	}
 	/**
 	 * Pick a default response to use if nothing else fits.
 	 *
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse() {
+	private String getRandomResponse(String state) {
 		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
-
-		if (whichResponse == 0) {
-			response = "I know my name is French, but I'm actually an American! I represent an immigrant, which makes one of my other lines sound ironic.";
-		} else if (whichResponse == 1) {
-			response = "I believe that immigrants shouldn't be allowed as much amnesty as they are. Imagine your parents treating the neighbour's son better than you. It doesn't feel good, does it?";
-		} else if (whichResponse == 2) {
-			response = "Is that really what you think?";
-		} else if (whichResponse == 3) {
-			response = "In politics, a difference of ideology is key, so it's good that we don't always agree.";
-		} else if (whichResponse == 4) {
-			response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
+		if (state == "neutral") {
+			if (whichResponse == 0) {
+				response = "I know my name is French, but I'm actually an American! I represent an immigrant, which makes one of my other lines sound ironic.";
+			} else if (whichResponse == 1) {
+				response = "I believe that immigrants shouldn't be allowed as much amnesty as they are. Imagine your parents treating the neighbour's son better than you. It doesn't feel good, does it?";
+			} else if (whichResponse == 2) {
+				response = "I see... I understand and agree with your point of view. We should always be driven by our ideals to reach a better tomorrow!";
+			}
+		}
+		else if (state == "negative") {
+			if (whichResponse == 0) {
+				response = "Is that really what you think?";
+			} else if (whichResponse == 1) {
+				response = "In politics, a difference of ideology is key, so it's good that we don't always agree.";
+			} else if (whichResponse == 2) {
+				response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
+			}
+		}
+		else if (state == "positive") {
+			if (whichResponse == 0) {
+				response = "I'm so glad that you're happy!! You make me smile and I hope your vote helps other people too!";
+			} else if (whichResponse == 1) {
+				response = "If the politicians today were as cheerful as you we would be a lot more productive!!";
+			} else if (whichResponse == 2) {
+				response = "The reason I'm choosing not to answer your question is because you have not yet cast your ballot. Make sure to get your voice heard and vote (preferably Republican, but your voice is your own)!";
+			}
 		}
 		return response;
 	}
