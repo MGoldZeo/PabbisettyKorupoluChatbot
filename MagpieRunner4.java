@@ -14,16 +14,22 @@ public class MagpieRunner4
 	public static void main(String[] args)
 	{
 		Magpie4 maggie = new Magpie4();
-		
+		Review r = new Review();
 		System.out.println (maggie.getGreeting());
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
 		in.close();
 		while (!statement.equals("Bye"))
 		{
-			System.out.println (maggie.getResponse(statement));
+			if(statement.equals("Bye")){
+				break;
+			}
+			double sentVal = r.totalSentiment(statement);
+			String state = maggie.setState(sentVal);
+			System.out.println (maggie.getRandomResponse(state));
 			statement = in.nextLine();
 		}
+		System.out.println("Adieu my friend! It was fun discussing politics with you");	
 	}
 
 }
